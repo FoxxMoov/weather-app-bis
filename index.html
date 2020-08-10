@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WeatherApp</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href="c02d.png" />
+</head>
+
+<body class="h-screen">
+    <div class="flex flex-col justify-center">
+        <div class="flex-col items-center justify-center w-full">
+            <div class="w-full flex-col md:flex-row flex items-center">
+                <div class="mx-auto w-9/12 xl:w-7/12 flex-col flex items-center justify-start mt-6">
+                    <h1 class="text-gray-800 text-xl md:w-7/12">
+                        Sélectionnez une ville
+                    </h1>
+                    <div
+                        class="rounded-full h-10 text-base pl-4 w-10/12 md:w-7/12 flex items-center justify-between border">
+                        <form action="index.js" method="GET" id="form" class="w-full mr-4 text-gray-800 bg-white">
+                            <select id="select" onchange="getWeather()" class="w-full"></select>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="loader" class="hidden">
+                loader
+            </div>
+            <div class="flex items-center justify-center mb-4 hidden" id="contrainerResult">
+                <div class="border rounded w-11/12 md:w-7/12 m-auto shadow-lg bg-white mt-12">
+                    <div class="flex justify-start p-2 md:p-8">
+                        <div class="flex-col items-center w-full">
+                            <h1 class="text-3xl text-gray-800" id="cityName">
+                            </h1>
+                            <p id="localtime"></p>
+                            <p id="weatherDescription"></p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <img src="" class="w-16 md:w-24 h-16 md:h-24" id="icon" />
+                                    <p class="pl-4 text-2xl md:text-4xl" id="temperature"></p>
+                                    <span class="mb-6">°C</span>
+                                </div>
+                                <div class="flex-col items-start md:w-4/12">
+                                    <p class="text-xs md:text-lg text-gray-800" id="feellike"></p>
+                                    <p class="text-xs md:text-lg text-gray-800" id="humidity"></p>
+                                    <p class="text-xs md:text-lg text-gray-800" id="wind"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overflow-y-hidden overflow-x-scroll whitespace-no-wrap md:p-8 m-auto"
+                        id="forecast"></div>
+                    <iframe id="map" class="w-full h-64" frameborder="0" scrolling="yes" marginheight="0"
+                        marginwidth="0">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="index.js"></script>
+        <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+</body>
+
+</html>
